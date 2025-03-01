@@ -25,8 +25,8 @@ import com.troopybinary.path.PathfindingAlgorithm;
 
 public class MazeSolver extends JFrame {
 	
-	private static final long serialVersionUID = 1L;
-	private int[][] maze;
+    private static final long serialVersionUID = 1L;
+    private int[][] maze;
     private int[][] orgMaze;
     private int[][] solutionPath;
     private JPanel mazePanel;
