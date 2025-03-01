@@ -42,7 +42,7 @@ public class MazeSolver extends JFrame {
     private int height;
     
     public MazeSolver() {
-    	this.setTitle("Maze Generator-Solver(Pathfinding)");
+    	this.setTitle("Maze Solver");
     	this.setSize(900, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -89,9 +89,9 @@ public class MazeSolver extends JFrame {
         this.add(controlPanel, BorderLayout.NORTH);
 
         mazePanel = new JPanel() {
-			private static final long serialVersionUID = 1L;
+	    private static final long serialVersionUID = 1L;
 
-			@Override
+	    @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (maze != null) {
@@ -120,36 +120,35 @@ public class MazeSolver extends JFrame {
 
     private void generateMaze() {
         String selectedGenerator = (String) mazeGeneratorComboBox.getSelectedItem();
-
         try {
-        	 int fWidth = Integer.parseInt(widthTextField.getText());
+             int fWidth = Integer.parseInt(widthTextField.getText());
              int fHeight = Integer.parseInt(heightTextField.getText());
-            if (fWidth <= 4 || fHeight <= 4 && fWidth > 600 || fHeight > 600) {
+             if (fWidth <= 4 || fHeight <= 4 && fWidth > 600 || fHeight > 600) {
                 JOptionPane.showMessageDialog(this, "Width and height must be at least 5 and at most 600.");
                 return;
-            }else {
+             }else {
                 width = fWidth;
                 height = fHeight;
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter valid numbers for width and height!");
-            return;
+             }
+        }catch (NumberFormatException e) {
+             JOptionPane.showMessageDialog(this, "Please enter valid numbers for width and height!");
+             return;
         }
         
         MazeGenerator generator = null;
         switch (selectedGenerator) {
-        case "Recursive Backtracking":
-        	generator = new RecursiveBacktrackingMazeGenerator(width, height);
-            break;
-        case "Kruskal's Algorithm":
-            generator = new KruskalsMazeGenerator(width, height);
+            case "Recursive Backtracking":
+                generator = new RecursiveBacktrackingMazeGenerator(width, height);
+            	break;
+            case "Kruskal's Algorithm":
+                generator = new KruskalsMazeGenerator(width, height);
         	break;
-        case "Aldous-Broder":
+            case "Aldous-Broder":
         	generator = new AldousBroderMazeGenerator(width, height);
         	break;
-        default:
-            JOptionPane.showMessageDialog(this, "Invalid algorithm selected!");
-            return;
+            default:
+            	JOptionPane.showMessageDialog(this, "Invalid algorithm selected!");
+            	return;
         }
         maze = generator.generateMaze();
 
