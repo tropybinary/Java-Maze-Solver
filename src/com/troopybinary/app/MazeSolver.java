@@ -42,33 +42,33 @@ public class MazeSolver extends JFrame {
     private int height;
     
     public MazeSolver() {
-    	this.setTitle("Maze Solver");
+    	this.setTitle("Maze Generator-Solver(Pathfinding)");
     	this.setSize(900, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
-        mazeGeneratorComboBox = new JComboBox<>(new String[]{
+        this.mazeGeneratorComboBox = new JComboBox<>(new String[]{
             "Recursive Backtracking", "Kruskal's Algorithm", "Aldous-Broder"
         });
 
-        pathfinderComboBox = new JComboBox<>(new String[]{"A*"});
+        this.pathfinderComboBox = new JComboBox<>(new String[]{"A*"});
 
-        generateButton = new JButton("Generate Maze");
-        solveButton = new JButton("Solve Maze");
-        widthLabel = new JLabel("Width:");
-        widthTextField = new JTextField("50", 5);
-        widthTextField.setToolTipText("Width");
-        heightLabel = new JLabel("Height:");
-        heightTextField = new JTextField("50", 5);
-        heightTextField.setToolTipText("Height");
-        generateButton.addActionListener(new ActionListener() {
+        this.generateButton = new JButton("Generate Maze");
+        this.solveButton = new JButton("Solve Maze");
+        this.widthLabel = new JLabel("Width:");
+        this.widthTextField = new JTextField("50", 5);
+        this.widthTextField.setToolTipText("Width");
+        this.heightLabel = new JLabel("Height:");
+        this.heightTextField = new JTextField("50", 5);
+        this.heightTextField.setToolTipText("Height");
+        this.generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 generateMaze();
             }
         });
 
-        solveButton.addActionListener(new ActionListener() {
+        this.solveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 solveMaze();
@@ -88,7 +88,7 @@ public class MazeSolver extends JFrame {
         controlPanel.add(heightTextField);
         this.add(controlPanel, BorderLayout.NORTH);
 
-        mazePanel = new JPanel() {
+        this.mazePanel = new JPanel() {
 	    private static final long serialVersionUID = 1L;
 
 	    @Override
@@ -115,7 +115,7 @@ public class MazeSolver extends JFrame {
                 }
             }
         };
-        add(mazePanel, BorderLayout.CENTER);
+        this.add(this.mazePanel, BorderLayout.CENTER);
     }
 
     private void generateMaze() {
